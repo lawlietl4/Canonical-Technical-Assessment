@@ -1,0 +1,13 @@
+Testing SSH using password and key:
+1. install selected OS onto machine (VM or metal)
+2. install necessary SSH server and/or client software
+3. from client system attempt to ssh into machine with known username and password
+	a. if username was set improperly then physical access and/or reimaging will be necessary
+	b. if password fails to authenticate properly, retype slowly
+		i. if this continues to fail physical access and/or reimaging will be necessary
+	c. fails if either is not properly set and OS needs to be reimaged
+4. create a key-value pair on the server machine using [ ssh-keygen [-t [ecdsa|ecdsa_sk] | [ed22519|ed25519_sk] | rsa | dsa ] ]
+5. answer all prompts provided by the application and supply the proper password
+6. copy the public key to the client system using [ssh-copy-id user@client-ip] and test to see if prompted for password attached to key
+	a. if password does not work then administrator will have to regenerate the key
+	b. this fails if password is not set properly and key file cannot be regenerated
